@@ -1,3 +1,7 @@
+# binaries
+build/amd64/image/boot/kernel.exe
+dist
+
 # Prerequisites
 *.d
 
