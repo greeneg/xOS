@@ -29,4 +29,4 @@ build-amd64: $(kernel_obj) $(amd64_obj)
 	grub2-mkrescue -d /usr/share/grub2/i386-pc -o dist/amd64/kernel.iso build/amd64/image
 
 clean:
-	rm -rf dist build/*/*.o build/*/*.exe build/*/*/*.exe
+	rm -rf dist build/*/*.o build/*/*.exe build/*/*/*.exe build/*/*/*/*.exe
