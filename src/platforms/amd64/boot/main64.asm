@@ -4,6 +4,7 @@
 ; the GNU Lesser General Public License, v2.1.
 
 global long_mode_start ; make global to allow nasm to find it when linking
+extern kernel_main
 
 section .text
 bits 64 ; we're now in 64-bit land
@@ -16,7 +17,7 @@ long_mode_start:
     mov fs, ax
     mov gs, ax
 
-    ; print `OK`
-    mov dword [0xb8000], 0x2f4b2f4f ; symbolic of "OK"
+    ; call our kernel_main C code
+    call kernel_main
 
     hlt
