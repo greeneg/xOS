@@ -1,8 +1,5 @@
 #include "print.h"
 
-#include <stdint.h>
-#include <stddef.h>
-
 const static size_t NUM_COLS = 80;
 const static size_t NUM_ROWS = 25;
 
@@ -53,7 +50,7 @@ void print_newline() {
 }
 
 void print_char(char character) {
-    if (character = '\n') {
+    if (character == '\n') {
         print_newline();
         return;
     }
