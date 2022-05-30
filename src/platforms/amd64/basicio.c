@@ -18,10 +18,29 @@
  *   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "print.h"
+/*
+    We use inbyte for reading from the I/O ports to get data from devices such
+    as the keyboard. To do so, we need the 'inb' instruction, which is only
+    accessible from assemby. So the C function is simply an extern asm wrapper
+    around that single assembly instruction.
+*/
+#include <stdint.h>
+#include <stddef.h>
 
-void kernel_main() {
-    print_clear();
-    print_set_color(PRINT_COLOR_CYAN, PRINT_COLOR_BLACK);
-    kprint("Welcome to x0S 64-bit Operating System");
+uint8_t inbyte(uint16_t port) {
+    uint8_t ret;
+
+    /* inline assembly */
+    __asm__ __volatile__ ("inb %1, %0" : "=a" (ret) : "d" (port));
+
+    return ret;
+}
+
+/*
+    We use outbyte to write to I/O ports, e.g. to send bytes to devices. Again
+    we need to use inline asm to wrap the call, as it is only available as a
+    direct register call in the CPU
+ */
+void outbyte(uint16_t port, uint8_t data) {
+    __asm__ __volatile__ ("outb %1, %0" : : "d" (port), "a" (data));
 }

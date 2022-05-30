@@ -18,10 +18,23 @@
  *   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "print.h"
+/*
+    Convenient memory functions. GLibC cannot help us, as we're inside our 
+    kernel at boot.
+ */
 
-void kernel_main() {
-    print_clear();
-    print_set_color(PRINT_COLOR_CYAN, PRINT_COLOR_BLACK);
-    kprint("Welcome to x0S 64-bit Operating System");
+unsigned char *memcpy(unsigned char *dest, const unsigned char *src, int count) {
+    for (int i = 0; i < count; i++) {
+        dest[i] = src[i];
+    }
+
+    return dest;
+}
+
+unsigned char *memset(unsigned char *dest, unsigned char val, int count) {
+    for (int i = 0; i < count; i++) {
+        dest[i] = val;
+    }
+
+    return dest;
 }

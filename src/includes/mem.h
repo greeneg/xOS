@@ -18,10 +18,10 @@
  *   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "print.h"
+#pragma once
 
-void kernel_main() {
-    print_clear();
-    print_set_color(PRINT_COLOR_CYAN, PRINT_COLOR_BLACK);
-    kprint("Welcome to x0S 64-bit Operating System");
-}
+#include <stdint.h>
+#include <stddef.h>
+
+unsigned char *memcpy(unsigned char *dest, const unsigned char *src, int count);
+unsigned char *memset(unsigned char *dest, unsigned char val, int count);
