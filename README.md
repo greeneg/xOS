@@ -25,9 +25,21 @@ This directory contains all the design and operational documentation of xOS. Eve
 
 This directory contains all the sources, Makefiles, and README files for the core of the xOS operating system, `kernel.exe` and the driver servers that are spawned by it, including the `vfs.daemon`, `namespace.daemon`, etc.
 
+### The `libraries` Diretory
+
+This directory contains all the user-land libraries bundled with xOS.
+
 ### The `utils` Directory
 
 This directory contains all the user-land utilities bundled with xOS. These include the typical UNIX utilities `ls`, `cp`, etc. along with operating system specific tools, like `namespacectl`, `mountctl`, etc.
+
+### A Note About the `3rd-Party` Sub-Directories
+
+The code of the xOS operating system itself, is under the GNU Lesser General Public License version 2.1, and each component that is developed by YggdrasilSoft will have a LICENSE file in the component sub-directory with the terms of the LGPL v2.1.
+
+However, in the `library` and `utils` directories, a `3rd-Party` subdirectory exists that contains libraries or utilities that are NOT developed by YggdrasilSoft, and may be under stricter or more permissive licenses, such as the GPL v3 or the BSD or MIT licenses. These components are included to extend the functionality of the operating system.
+
+When modifying or redistributing these components, please adhere to the spirit and letter of their respective licenses.
 
 ## Building the Software
 
