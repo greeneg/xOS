@@ -11,11 +11,11 @@ amd64_obj := $(amd64_c_obj) $(amd64_asm_obj)
 
 $(kernel_obj): ../build/kernel/%.o : src/kernel/%.c
 	mkdir -p $(dir $@) && \
-	gcc -c -I src/includes -ffreestanding $(patsubst ../build/kernel/%.o, src/kernel/%.c, $@) -o $@
+	gcc -c -I src/include -ffreestanding $(patsubst ../build/kernel/%.o, src/kernel/%.c, $@) -o $@
 
 $(amd64_c_obj): ../build/amd64/%.o : src/arch/amd64/%.c
 	mkdir -p $(dir $@) && \
-	gcc -c -I src/includes -ffreestanding $(patsubst ../build/amd64/%.o, src/arch/amd64/%.c, $@) -o $@
+	gcc -c -I src/include -ffreestanding $(patsubst ../build/amd64/%.o, src/arch/amd64/%.c, $@) -o $@
 
 $(amd64_asm_obj): ../build/amd64/%.o : src/arch/amd64/boot/%.asm
 	mkdir -p $(dir $@) && \
